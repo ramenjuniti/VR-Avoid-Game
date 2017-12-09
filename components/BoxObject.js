@@ -1,5 +1,5 @@
 import React from 'react';
-import { asset, Box, View, Animated, Sound, Text } from 'react-vr';
+import { asset, Box, View, Animated, Sound } from 'react-vr';
 
 export default class BoxObject extends React.Component {
 
@@ -7,7 +7,7 @@ export default class BoxObject extends React.Component {
     return (
       <Animated.View
         style={{
-          layoutOrigin: [2.5, 2.5],
+          layoutOrigin: [5, 5],
           transform: [
             { translate: [this.props.boxX, 1, 0] },
             { translateZ: this.props.boxZ }
@@ -17,8 +17,8 @@ export default class BoxObject extends React.Component {
         <Box
           texture={asset('box_texture.jpg')}
           dimWidth={5}
-          dimDepth={5}
           dimHeight={5}
+          dimDepth={5}
         >
           {
             this.props.collisionSound ?

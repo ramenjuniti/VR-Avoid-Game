@@ -28,7 +28,6 @@ export default class VrGame extends React.Component {
       startCount: 3,
       startCountDown: setInterval(() => this.countDown(), 1000),
 
-      locationId: null,
       //ヘッドセットであればz軸で値を取得し、そうでなければy軸で値を取得する
       headPosition: VrHeadModel.rotation()[vrHeadSet],
       //頭の位置の値を常に監視する
@@ -74,7 +73,7 @@ export default class VrGame extends React.Component {
       }, 2000),
       judgeCollision: setInterval(() => {
         this.state.boxX.map((i) => (
-          this.collision(i, this.state.boxZ._value)
+          this.collision(i + (this.state.headPosition / 2), this.state.boxZ._value)
         ))
       }, 0),
       scoreInterval: setInterval(() => this.scoreCounter(), 40)
@@ -137,9 +136,8 @@ export default class VrGame extends React.Component {
 
   //障害物に当たったかどうかを判定し、当たればインターバルを止める
   collision(x, y) {
-    let distance = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
-    if (distance < 1.2) {
-      console.log("collision!!", distance);
+    let distance = Math.pow(x, 2) + Math.pow(y, 2);
+    if (distance < 6.25) {
       this.state.boxZ.stopAnimation();
       clearInterval(this.state.front);
       clearInterval(this.state.judgeCollision);
@@ -177,7 +175,6 @@ export default class VrGame extends React.Component {
         />
         <GameOverObject
           gameOverTextDisplay={this.state.gameOverTextDisplay}
-          retry={this.state.retryText}
           gameStart={() => this.props.gameStart()}
         />
         <ScoreObject

@@ -52,12 +52,12 @@ export default class Start extends React.Component {
         <Text
           style={{
             position: 'absolute',
-            fontSize: 0.5,
+            fontSize: 0.7,
             padding: 0.1,
             borderRadius: 0.2,
             textAlign: 'center',
             textAlignVertical: 'center',
-            backgroundColor: '#607D8B',
+            // backgroundColor: '#607D8B',
             layoutOrigin: [0.5, 0.5],
             transform: [{ translate: [0, 1, -3] }]
           }}

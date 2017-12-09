@@ -12,13 +12,9 @@ export default class CountDownObject extends React.Component {
             <Text
               style={{
                 position: 'absolute',
-                color: '#FD9727',
+                color: '#FFC107',
                 fontSize: 0.8,
                 layoutOrigin: [0.5, 0.5],
-                paddingLeft: 0.2,
-                paddingRight: 0.2,
-                textAlign: 'center',
-                textAlignVertical: 'center',
                 transform: [{ translate: [0, 0, -3] }],
               }}>
               {this.props.startCount}

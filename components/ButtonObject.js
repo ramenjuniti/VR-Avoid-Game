@@ -7,29 +7,47 @@ import {
   Text,
   VrButton,
   VrHeadModel,
+  Animated
 } from 'react-vr';
+
+const Easing = require("Easing");
 
 export default class ButtonObject extends React.Component {
   constructor() {
     super();
+    this.state = {
+      buttonZ: new Animated.Value(-2),
+      buttonY: new Animated.Value(-0.8)
+    }
     this.focusClick = this.focusClick.bind(this);
   }
 
   enter() {
     this.timeout = setTimeout(this.focusClick, 1000);
+    this.animation = Animated.parallel([
+      this.moveButton()
+    ]);
+    this.animation.start();
   }
 
   exit() {
     clearTimeout(this.timeout);
+    this.clearAnimation();
+    this.animation = Animated.parallel([
+      this.backButton()
+    ]);
+    this.animation.start();
   }
 
   click() {
     clearTimeout(this.timeout);
+    this.clearAnimation();
     this.props.gameStart();
   }
 
   focusClick() {
     clearTimeout(this.timeout);
+    this.clearAnimation();
     this.props.gameStart();
   }
 
@@ -41,9 +59,55 @@ export default class ButtonObject extends React.Component {
     this.timeout = null;
   }
 
+  clearAnimation() {
+    if (!this.animation) {
+      return;
+    }
+    this.animation.stop();
+    this.animation = null;
+  }
+
+  moveButton() {
+    return Animated.sequence([
+      Animated.parallel([
+        Animated.timing(this.state.buttonZ, {
+          duration: 500,
+          toValue: -1,
+        }),
+        Animated.timing(this.state.buttonY, {
+          duration: 500,
+          toValue: -0.5,
+        }),
+      ])
+    ]);
+  }
+
+  backButton() {
+    return Animated.sequence([
+      Animated.parallel([
+        Animated.timing(this.state.buttonZ, {
+          duration: 500,
+          toValue: -2,
+        }),
+        Animated.timing(this.state.buttonY, {
+          duration: 500,
+          toValue: -0.8,
+        }),
+      ])
+    ]);
+  }
+
   render() {
     return (
-      <View>
+      <Animated.View
+        style={{
+          position: 'absolute',
+          transform: [
+            { translateZ: this.state.buttonZ },
+            { translateY: this.state.buttonY }
+          ]
+        }}
+      >
         <VrButton
           onClick={() => this.click()}
           onEnter={() => this.enter()}
@@ -53,11 +117,12 @@ export default class ButtonObject extends React.Component {
             width: 1.5,
             height: 0.6,
             borderRadius: 0.2,
-            backgroundColor: '#134A9E',
+            backgroundColor: '#159587',
             layoutOrigin: [0.5, 0.5],
-            textAlign: 'center',
-            textAlignVertical: 'center',
-            transform: [{ translate: [0, -1, -3] }]
+            transform: [
+              { translate: [0, -0.8, -2] },
+              { rotateX: -10 }
+            ]
           }}
         >
           <Text
@@ -70,7 +135,7 @@ export default class ButtonObject extends React.Component {
             {this.props.buttonLabel}
           </Text>
         </VrButton>
-      </View>
+      </Animated.View>
     )
   }
 }
