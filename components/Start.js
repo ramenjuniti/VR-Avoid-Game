@@ -1,6 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
 import {
   AppRegistry,
   View,
@@ -8,11 +6,43 @@ import {
   asset,
   Text,
   VrButton,
-  VrHeadModel
+  VrHeadModel,
 } from 'react-vr';
 
+import ButtonObject from './ButtonObject';
 
 export default class Start extends React.Component {
+  constructor() {
+    super();
+    this.focusClick = this.focusClick.bind(this);
+  }
+
+  enter() {
+    this.timeout = setTimeout(this.focusClick, 1000);
+  }
+
+  exit() {
+    clearTimeout(this.timeout);
+  }
+
+  click() {
+    clearTimeout(this.timeout);
+    this.props.gameStart();
+  }
+
+  focusClick() {
+    clearTimeout(this.timeout);
+    this.props.gameStart();
+  }
+
+  timerReset() {
+    if (!this.timeout) {
+      return;
+    }
+    clearTimeout(this.timeout);
+    this.timeout = null;
+  }
+
   render() {
     return (
       <View>
@@ -37,7 +67,7 @@ export default class Start extends React.Component {
         <Text
           style={{
             position: 'absolute',
-            fontSize: 0.2,
+            fontSize: 0.15,
             textAlign: 'center',
             layoutOrigin: [0.5, 0.5],
             transform: [{ translate: [0, 0, -3] }]
@@ -46,32 +76,17 @@ export default class Start extends React.Component {
           ゲーム内では
           {"\n"}
           {VrHeadModel.inVR() ?
-            "首を左右に傾けることで\n移動することができます"
+            "首を左右に傾けることで\n移動することができます\n"
             :
-            "視点を左右に動かすことで\n移動することができます"
+            "視点を左右に動かすことで\n移動することができます\n"
           }
+          {"\n"}
+          ボタンに視点合わせればクリックできます
         </Text>
-        <VrButton
-          onClick={() => this.props.gameStart()}
-          style={{
-            position: 'absolute',
-            width: 1.5,
-            borderRadius: 0.2,
-            backgroundColor: '#009688',
-            layoutOrigin: [0.5, 0.5],
-            transform: [{ translate: [0, -1, -3] }]
-          }}
-        >
-          <Text
-            style={{
-              fontSize: 0.5,
-              textAlign: 'center',
-              textAlignVertical: 'center'
-            }}
-          >
-            Start
-          </Text>
-        </VrButton>
+        <ButtonObject
+          buttonLabel={'Start'}
+          gameStart={this.props.gameStart}
+        />
       </View>
     );
   }

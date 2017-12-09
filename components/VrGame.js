@@ -138,7 +138,7 @@ export default class VrGame extends React.Component {
   //障害物に当たったかどうかを判定し、当たればインターバルを止める
   collision(x, y) {
     let distance = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
-    if (distance < 1) {
+    if (distance < 1.2) {
       console.log("collision!!", distance);
       this.state.boxZ.stopAnimation();
       clearInterval(this.state.front);

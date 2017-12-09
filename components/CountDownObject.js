@@ -14,7 +14,6 @@ export default class CountDownObject extends React.Component {
                 position: 'absolute',
                 color: '#FD9727',
                 fontSize: 0.8,
-                fontWeight: 300,
                 layoutOrigin: [0.5, 0.5],
                 paddingLeft: 0.2,
                 paddingRight: 0.2,
