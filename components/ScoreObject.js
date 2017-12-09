@@ -8,12 +8,12 @@ export default class ScoreObject extends React.Component {
         <Text
           style={{
             position: 'absolute',
-            fontSize: 0.1,
+            fontSize: 0.2,
             layoutOrigin: [0.5, 0.5],
             textAlign: 'center',
             textAlignVertical: 'center',
             transform: [
-              { translate: this.props.scoreTextPosition ? [0, 0, -0.5] : [-0.5, 0.4, -1] },
+              { translate: this.props.scoreTextPosition ? [0, -0.1, -1] : [-1, 1, -2] },
               { rotateX: this.props.scoreTextPosition ? 0 : 10 },
               { rotateY: this.props.scoreTextPosition ? 0 : 10 }
             ]

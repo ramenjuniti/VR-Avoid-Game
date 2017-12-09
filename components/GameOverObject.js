@@ -26,10 +26,10 @@ const styles = StyleSheet.create({
   GameOverText: {
     position: 'absolute',
     color: '#E70B19',
-    fontSize: 0.15,
+    fontSize: 0.3,
     layoutOrigin: [0.5, 0.5],
     transform: [
-      { translate: [0, 0.14, -0.5] },
+      { translate: [0, 0.3, -1] },
       { rotateX: 5 }
     ]
   }

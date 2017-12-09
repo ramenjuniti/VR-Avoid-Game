@@ -55,9 +55,6 @@ export default class Start extends React.Component {
             fontSize: 0.7,
             padding: 0.1,
             borderRadius: 0.2,
-            textAlign: 'center',
-            textAlignVertical: 'center',
-            // backgroundColor: '#607D8B',
             layoutOrigin: [0.5, 0.5],
             transform: [{ translate: [0, 1, -3] }]
           }}
@@ -67,8 +64,10 @@ export default class Start extends React.Component {
         <Text
           style={{
             position: 'absolute',
-            fontSize: 0.15,
+            fontSize: 0.2,
+            fontWeight: 'bold',
             textAlign: 'center',
+            textAlignVertical: 'center',
             layoutOrigin: [0.5, 0.5],
             transform: [{ translate: [0, 0, -3] }]
           }}
@@ -81,7 +80,7 @@ export default class Start extends React.Component {
             "視点を左右に動かすことで\n移動することができます\n"
           }
           {"\n"}
-          ボタンに視点合わせればクリックできます
+          ボタンに視点合わせるとクリックできます
         </Text>
         <ButtonObject
           buttonLabel={'Start'}
