@@ -5,4 +5,4 @@ ReactVRを用いたVRゲーム
 https://vr-avoid-game.firebaseapp.com
 
 # Demo
-https://imgur.com/a/ivJOd
+<img src="https://imgur.com/a/ivJOd" alt="demo" title="VR_Avoid_Game_Demo">
