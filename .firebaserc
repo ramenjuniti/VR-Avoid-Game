@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "vr-avoid-game": "vr-avoid-game",
+    "default": "vr-avoid-game"
+  }
+}

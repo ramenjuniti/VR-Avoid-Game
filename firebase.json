@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "./vr",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

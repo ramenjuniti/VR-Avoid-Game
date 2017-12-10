@@ -12,7 +12,7 @@
 
 <body>
   <!-- When you're ready to deploy your app, update this line to point to your compiled client.bundle.js -->
-  <script src="./client.bundle?platform=vr"></script>
+  <script src="./build/client.bundle.js"></script>
   <script>
     // Initialize the React VR application
     ReactVR.init(
@@ -23,6 +23,7 @@
       document.body,
       {
         cursorVisibility: 'visible',
+        assetRoot: './static_assets'
       }
     );
   </script>
