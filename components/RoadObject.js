@@ -25,6 +25,7 @@ export default class RoadObject extends React.Component {
               front={this.props.front}
               judgeCollision={this.props.judgeCollision}
               collisionSound={this.props.collisionSound}
+              avoidSound={this.props.avoidSound}
             />
           ))
         }

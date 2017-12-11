@@ -27,7 +27,13 @@ export default class BoxObject extends React.Component {
                 volume={3}
               />
               :
-              <View></View>
+              this.props.avoidSound ?
+                <Sound
+                  source={asset('avoid.mp3')}
+                  volume={3}
+                />
+                :
+                <View></View>
           }
         </Box>
       </Animated.View>

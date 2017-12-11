@@ -4,7 +4,8 @@ import {
   asset,
   View,
   VrHeadModel,
-  Animated
+  Animated,
+  Sound
 } from 'react-vr'
 
 import CountDownObject from './CountDownObject';
@@ -53,6 +54,7 @@ export default class VrGame extends React.Component {
 
       gameOverTextDisplay: false,
       collisionSound: false,
+      avoidSound: false,
 
       score: 0,
       scoreTextPosition: false,
@@ -70,6 +72,7 @@ export default class VrGame extends React.Component {
       front: setInterval(() => {
         this.randomBoxPosition(this.state.boxPosition);
         this.animatedFront();
+        this.setState({ avoidSound: false })
       }, 2000),
       judgeCollision: setInterval(() => {
         this.state.boxX.map((i) => (
@@ -137,6 +140,9 @@ export default class VrGame extends React.Component {
   //障害物に当たったかどうかを判定し、当たればインターバルを止める
   collision(x, y) {
     let distance = Math.pow(x, 2) + Math.pow(y, 2);
+    if (6.25 <= distance && distance <= 25) {
+      this.setState({ avoidSound: true })
+    }
     if (distance < 6.25) {
       this.state.boxZ.stopAnimation();
       clearInterval(this.state.front);
@@ -161,6 +167,10 @@ export default class VrGame extends React.Component {
   render() {
     return (
       <View>
+        <Sound
+          source={{ mp3: asset('game_BGM.mp3') }}
+          loop={true}
+        />
         <CountDownObject
           startCount={this.state.startCount}
         />
@@ -172,6 +182,7 @@ export default class VrGame extends React.Component {
           front={this.state.front}
           judgeCollision={this.state.judgeCollision}
           collisionSound={this.state.collisionSound}
+          avoidSound={this.state.avoidSound}
         />
         <GameOverObject
           gameOverTextDisplay={this.state.gameOverTextDisplay}

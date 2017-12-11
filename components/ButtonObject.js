@@ -7,7 +7,8 @@ import {
   Text,
   VrButton,
   VrHeadModel,
-  Animated
+  Animated,
+  VrSoundEffects
 } from 'react-vr';
 
 const Easing = require("Easing");
@@ -20,6 +21,9 @@ export default class ButtonObject extends React.Component {
       buttonY: new Animated.Value(-0.8)
     }
     this.focusClick = this.focusClick.bind(this);
+    VrSoundEffects.load({
+      mp3: asset("button.mp3")
+    });
   }
 
   enter() {
@@ -42,12 +46,18 @@ export default class ButtonObject extends React.Component {
   click() {
     clearTimeout(this.timeout);
     this.clearAnimation();
+    VrSoundEffects.play({
+      mp3: asset("button.mp3")
+    });
     this.props.gameStart();
   }
 
   focusClick() {
     clearTimeout(this.timeout);
     this.clearAnimation();
+    VrSoundEffects.play({
+      mp3: asset("button.mp3")
+    });
     this.props.gameStart();
   }
 

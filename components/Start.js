@@ -7,48 +7,21 @@ import {
   Text,
   VrButton,
   VrHeadModel,
+  Sound
 } from 'react-vr';
 
 import ButtonObject from './ButtonObject';
 
 export default class Start extends React.Component {
-  constructor() {
-    super();
-    this.focusClick = this.focusClick.bind(this);
-  }
-
-  enter() {
-    this.timeout = setTimeout(this.focusClick, 1000);
-  }
-
-  exit() {
-    clearTimeout(this.timeout);
-  }
-
-  click() {
-    clearTimeout(this.timeout);
-    this.props.gameStart();
-  }
-
-  focusClick() {
-    clearTimeout(this.timeout);
-    this.props.gameStart();
-  }
-
-  timerReset() {
-    if (!this.timeout) {
-      return;
-    }
-    clearTimeout(this.timeout);
-    this.timeout = null;
-  }
-
   render() {
     return (
       <View>
-        <Pano
-          source={asset("Pano.jpg")}
-        />
+        <Pano source={asset("Pano.jpg")}>
+          <Sound
+            source={{ mp3: asset('start_BGM.mp3') }}
+            loop={true}
+          />
+        </Pano>
         <Text
           style={{
             position: 'absolute',
@@ -69,7 +42,7 @@ export default class Start extends React.Component {
             textAlign: 'center',
             textAlignVertical: 'center',
             layoutOrigin: [0.5, 0.5],
-            transform: [{ translate: [0, 0, -3] }]
+            transform: [{ translate: [0, -0.2, -3] }]
           }}
         >
           ゲーム内では
