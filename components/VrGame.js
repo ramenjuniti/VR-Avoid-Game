@@ -143,7 +143,7 @@ export default class VrGame extends React.Component {
     if (6.25 <= distance && distance <= 25) {
       this.setState({ avoidSound: true })
     }
-    if (distance < 6.25) {
+    if (distance < 7.5) {
       this.state.boxZ.stopAnimation();
       clearInterval(this.state.front);
       clearInterval(this.state.judgeCollision);
