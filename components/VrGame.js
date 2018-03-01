@@ -111,10 +111,12 @@ export default class VrGame extends React.Component {
 
   //頭の位置の値を取得し、stateに設定する
   setRotate(axis) {
-    if (-30 < VrHeadModel.rotation()[axis] || VrHeadModel.rotation()[axis] < 30) {
+    if (-20 < VrHeadModel.rotation()[axis] || VrHeadModel.rotation()[axis] < 20) {
       this.setState({
         headPosition: VrHeadModel.rotation()[axis]
-      })
+      });
+    } else {
+      this.Death();
     }
   }
 
@@ -145,29 +147,21 @@ export default class VrGame extends React.Component {
       this.setState({ avoidSound: true })
     }
     if (distance < 7.5) {
-      this.state.boxZ.stopAnimation();
-      clearInterval(this.state.front);
-      clearInterval(this.state.judgeCollision);
-      clearInterval(this.state.updateRotate);
-      clearInterval(this.state.scoreInterval);
-      this.setState({
-        gameOverTextDisplay: true,
-        collisionSound: true,
-        scoreTextPosition: true
-      });
+      this.Death();
     }
-    if (x <= 35 || x >= 35) {
-      this.state.boxZ.stopAnimation();
-      clearInterval(this.state.front);
-      clearInterval(this.state.judgeCollision);
-      clearInterval(this.state.updateRotate);
-      clearInterval(this.state.scoreInterval);
-      this.setState({
-        gameOverTextDisplay: true,
-        collisionSound: true,
-        scoreTextPosition: true
-      });
-    }
+  }
+
+  Death() {
+    this.state.boxZ.stopAnimation();
+    clearInterval(this.state.front);
+    clearInterval(this.state.judgeCollision);
+    clearInterval(this.state.updateRotate);
+    clearInterval(this.state.scoreInterval);
+    this.setState({
+      gameOverTextDisplay: true,
+      collisionSound: true,
+      scoreTextPosition: true
+    });
   }
 
   // スコアカウンター

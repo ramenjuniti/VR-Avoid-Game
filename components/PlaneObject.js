@@ -19,7 +19,7 @@ export default class PlaneObject extends React.Component {
         <Plane
           texture={asset('road.jpg')}
           dimWidth={500}
-          dimHeight={70}
+          dimHeight={60}
         />
       </Animated.View>
     );
