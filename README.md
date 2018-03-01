@@ -7,7 +7,7 @@ JavaScriptのライブラリである[ReactVR](https://facebook.github.io/react
 ## ルール
 * ランダムに発生する障害物を避け続けることでスコアが加算される
 * 障害物に衝突するとゲームオーバー
-* ステージからはみ出てしまうとゲームオーバー
+* ステージからはみ出てしまうとゲームオーバ-
 
 ## 操作方法
 デバイスによって表示や操作方法が異なる。
@@ -21,4 +21,5 @@ JavaScriptのライブラリである[ReactVR](https://facebook.github.io/react
 https://vr-avoid-game.firebaseapp.com
 
 ## デモ
-![VR_Avoid_Game_Demo](https://imgur.com/gzgsSJq.gif)
+![VR_Avoid_Game_Demo](https://imgur.com/gzgsSJq.gif)<br>
+これはPCで操作したものです
