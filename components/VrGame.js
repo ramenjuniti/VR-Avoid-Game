@@ -16,6 +16,7 @@ import Start from './Start';
 
 const Easing = require("Easing");
 
+
 export default class VrGame extends React.Component {
   constructor() {
     super();
@@ -144,6 +145,18 @@ export default class VrGame extends React.Component {
       this.setState({ avoidSound: true })
     }
     if (distance < 7.5) {
+      this.state.boxZ.stopAnimation();
+      clearInterval(this.state.front);
+      clearInterval(this.state.judgeCollision);
+      clearInterval(this.state.updateRotate);
+      clearInterval(this.state.scoreInterval);
+      this.setState({
+        gameOverTextDisplay: true,
+        collisionSound: true,
+        scoreTextPosition: true
+      });
+    }
+    if (x <= 35 || x >= 35) {
       this.state.boxZ.stopAnimation();
       clearInterval(this.state.front);
       clearInterval(this.state.judgeCollision);
