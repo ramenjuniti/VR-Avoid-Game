@@ -1,14 +1,14 @@
 # VR_Avoid_Game
 
 ## 概要
-JavaScriptのライブラリである[ReactVR](https://facebook.github.io/react-vr/index.html)を利用し，作ったWebVRゲーム<br>
+JavaScriptのライブラリである[ReactVR](https://facebook.github.io/react-vr/index.html)を利用し，作ったWebVRゲーム<br>
 迫りくる障害物を首の動きや視点の動きによって避けるというゲームである
 ## ルール
-* ランダムに発生する障害物を避け続けることでスコアが加算される
+* ランダムに発生する障害物を避け続けることでスコアが加算される
 * 障害物に衝突するとゲームオーバー
 * ステージからはみ出てしまうとゲームオーバ-
 ## 操作方法
-デバイスによって表示や操作方法が異なる。
+デバイスによって表示や操作方法が異なる
 |　|スマートフォン|PC|
 |:--:|:--:|:--:|
 |ブラウザでの表示|二眼|一眼|
@@ -18,4 +18,4 @@ JavaScriptのライブラリである[ReactVR](https://facebook.github.io/react-
 https://vr-avoid-game.firebaseapp.com
 ## デモ
 ![VR_Avoid_Game_Demo](https://imgur.com/gzgsSJq.gif)<br>
-これはPCで操作したものです
+これはPCで操作したものです
