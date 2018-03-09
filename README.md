@@ -1,4 +1,4 @@
-# VR_Avoid_Game
+# VR Avoid Game
 
 ## 概要
 JavaScriptのライブラリである[ReactVR](https://facebook.github.io/react-vr/index.html)を利用し，作ったWebVRゲーム<br>
